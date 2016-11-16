@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BreakpointsDownload</string>
+
+    <string name="state_downloading">下载中...</string>
+    <string name="state_pause">已暂停</string>
+    <string name="state_finished">下载完成</string>
+    <string name="state_fail">下载失败</string>
+
+</resources>

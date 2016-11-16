@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'android-apt'
+apply plugin: 'com.novoda.bintray-release'//添加
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    apt 'org.greenrobot:eventbus-annotation-processor:3.0.1'
+}
+apt {
+    arguments {
+        eventBusIndex "com.whoislcj.eventbus.MyEventBusIndex"
+    }
+}
+
+//添加
+publish {
+    userOrg = 'androidkun'//bintray.com用户名
+    groupId = 'com.androidkun'//jcenter上的路径
+    artifactId = 'breakpoints'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'this is a break points download file frame'//描述，不重要
+    website = 'https://github.com/hyman/basetools'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
